@@ -1,12 +1,24 @@
-import streamlit as st
-import helper
-import pickle
 import os
-if os.path.exists('model.pkl'):
-    model = pickle.load(open('model.pkl', 'rb'))
+import zipfile
+import pickle
+import streamlit as st
+
+# Path variables
+zip_path = "model.pkl.zip"
+model_path = "model.pkl"
+
+# Unzip model if not already unzipped
+if not os.path.exists(model_path):
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall()
+
+# Load the model
+if os.path.exists(model_path):
+    model = pickle.load(open(model_path, 'rb'))
 else:
-    st.error("❌ model.pkl not found. Please upload the model file.")
+    st.error("Model file not found after unzipping.")
     st.stop()
+
 
 # Load other required assets like cv.pkl
 if os.path.exists('cv.pkl'):
