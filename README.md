@@ -2,6 +2,9 @@
 
 A machine learning application that identifies whether two questions are duplicates or paraphrases of each other. Built with Python and deployed using Streamlit for an interactive web interface.
 
+# live demo of the project
+https://duplicate-question-checker-app.streamlit.app
+
 ## Overview
 
 This project uses natural language processing and machine learning techniques to determine if two input questions have the same semantic meaning. It's particularly useful for:
