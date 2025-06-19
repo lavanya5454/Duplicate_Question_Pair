@@ -1,6 +1,19 @@
 import streamlit as st
 import helper
 import pickle
+import os
+if os.path.exists('model.pkl'):
+    model = pickle.load(open('model.pkl', 'rb'))
+else:
+    st.error("❌ model.pkl not found. Please upload the model file.")
+    st.stop()
+
+# Load other required assets like cv.pkl
+if os.path.exists('cv.pkl'):
+    helper.cv = pickle.load(open('cv.pkl', 'rb'))
+else:
+    st.error("❌ cv.pkl not found. Please upload the vectorizer file.")
+    st.stop()
 
 model = pickle.load(open('model.pkl','rb'))
 
